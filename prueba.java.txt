@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Suma {
+    public static void main(String[] args) {
+        // Crear un objeto Scanner para leer la entrada del usuario
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicitar al usuario que ingrese dos números
+        System.out.print("Ingrese el primer número: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Ingrese el segundo número: ");
+        int num2 = scanner.nextInt();
+
+        // Realizar la suma
+        int suma = num1 + num2;
+
+        // Mostrar el resultado
+        System.out.println("La suma de " + num1 + " y " + num2 + " es: " + suma);
+
+        // Cerrar el scanner
+        scanner.close();
+    }
+}
+
