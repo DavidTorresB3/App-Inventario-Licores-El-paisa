@@ -1,0 +1,54 @@
+mport Servicio.UsuarioService;
+import Usuarios.Admin;
+import Usuarios.Worker;
+
+import java.util.Scanner;
+
+public class AppMain {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        UsuarioService usuarioService = new UsuarioService();
+
+        int opcion;
+
+        do {
+            System.out.println("\n=== SISTEMA DE INVENTARIO LOS PAISAS ===");
+            System.out.println("1. Registrar Admin");
+            System.out.println("2. Registrar Worker");
+            System.out.println("3. Mostrar Usuarios");
+            System.out.println("4. Salir");
+            System.out.print("Elige una opción: ");
+
+            while (!scanner.hasNextInt()) {
+                System.out.print("Por favor, ingresa un número válido: ");
+                scanner.next();
+            }
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar buffer
+
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese nombre del Admin: ");
+                    String nombreAdmin = scanner.nextLine();
+                    usuarioService.agregarUsuario(new Admin(nombreAdmin));
+                    break;
+                case 2:
+                    System.out.print("Ingrese nombre del Worker: ");
+                    String nombreWorker = scanner.nextLine();
+                    usuarioService.agregarUsuario(new Worker(nombreWorker));
+                    break;
+                case 3:
+                    usuarioService.listarUsuarios();
+                    break;
+                case 4:
+                    System.out.println(" Gracias por usar el sistema");
+                    break;
+                default:
+                    System.out.println(" Opción inválida, intenta de nuevo.");
+            }
+
+        } while (opcion != 4);
+
+        scanner.close();
+    }
+}
